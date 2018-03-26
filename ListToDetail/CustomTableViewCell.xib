@@ -27,13 +27,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Spider Man" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0u-ka-ykw">
-                        <rect key="frame" x="16" y="216" width="182" height="21"/>
+                        <rect key="frame" x="0.0" y="216" width="198" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Peter Parker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqe-J2-QTu">
-                        <rect key="frame" x="16" y="245" width="94" height="21"/>
+                        <rect key="frame" x="0.0" y="245" width="110" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -43,11 +43,11 @@
                     <constraint firstAttribute="trailingMargin" secondItem="g0u-ka-ykw" secondAttribute="trailing" constant="109" id="4Yc-tB-lYh"/>
                     <constraint firstAttribute="trailingMargin" secondItem="hqe-J2-QTu" secondAttribute="trailing" constant="197" id="5bd-TM-5yB"/>
                     <constraint firstItem="hqe-J2-QTu" firstAttribute="top" secondItem="g0u-ka-ykw" secondAttribute="bottom" constant="8" id="6to-sE-7uI"/>
-                    <constraint firstItem="hqe-J2-QTu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="9ft-P9-Lsl"/>
                     <constraint firstItem="g0u-ka-ykw" firstAttribute="top" secondItem="VBF-ev-WnD" secondAttribute="bottom" constant="15" id="A6m-rd-vDd"/>
+                    <constraint firstItem="g0u-ka-ykw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Cay-Pa-WJe"/>
                     <constraint firstItem="VBF-ev-WnD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="I0G-Qm-Dub"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="hqe-J2-QTu" secondAttribute="bottom" constant="16" id="I4E-bc-UYo"/>
-                    <constraint firstItem="g0u-ka-ykw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="iP2-eq-hzb"/>
+                    <constraint firstAttribute="bottom" secondItem="hqe-J2-QTu" secondAttribute="bottom" constant="26.5" id="Rmv-1D-tFM"/>
+                    <constraint firstItem="hqe-J2-QTu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="d2y-ih-U7N"/>
                     <constraint firstAttribute="trailing" secondItem="VBF-ev-WnD" secondAttribute="trailing" id="qTj-4C-Arr"/>
                     <constraint firstItem="VBF-ev-WnD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="yvI-TO-35q"/>
                 </constraints>

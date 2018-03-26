@@ -41,12 +41,12 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellId, for: indexPath) as! CustomTableViewCell
-        if indexPath.row % 2 == 0 {
-            cell.backgroundColor = .red
-        }
-        else {
-            cell.backgroundColor = .green
-        }
+//        if indexPath.row % 2 == 0 {
+//            cell.backgroundColor = .red
+//        }
+//        else {
+//            cell.backgroundColor = .green
+//        }
         return cell
     }
 }

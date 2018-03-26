@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+let ScreenWidth = UIScreen.main.bounds.width
+
+
 class CustomTransition: NSObject {
     var frame: CGRect!
 }
@@ -36,6 +39,8 @@ extension CustomTransition: UIViewControllerTransitioningDelegate {
 private class CustomPushAnimation: NSObject, UIViewControllerAnimatedTransitioning {
     let frame: CGRect
     
+    var middleView: UIView!
+    
     init(frame: CGRect) {
         self.frame = frame
     }
@@ -45,24 +50,86 @@ private class CustomPushAnimation: NSObject, UIViewControllerAnimatedTransitioni
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)
         let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
         let toView = transitionContext.view(forKey: UITransitionContextViewKey.to)
-        toView?.layoutIfNeeded()
         let toViewFinalFrame = transitionContext.finalFrame(for: toVC!)
         let containerView = transitionContext.containerView
         
+        
+//        guard let snapshotView = toVC?.view.snapshotView(afterScreenUpdates: true) else { return }
+//        containerView.addSubview(snapshotView)
+//        snapshotView.frame = frame
+        
+        guard let firstSnap = firstSnapshot(fromView: fromVC!.view, frame: frame) else { return }
+        containerView.addSubview(firstSnap)
+        
+        guard let middleSnap = middleSnapshot(toView: toView!, frame: frame) else { return }
+        containerView.addSubview(middleSnap)
+        
+        guard let lastSnap = lastSnapshot(fromView: fromVC!.view, frame: middleSnap.frame) else { return }
+        containerView.addSubview(lastSnap)
+        
         containerView.addSubview(toView!)
-        toView?.frame = frame
+//        toView?.frame = CGRect(x: 0, y: frame.origin.y, width: ScreenWidth, height: frame.height)
+        toView?.isHidden = true
+
         
         let duration = transitionDuration(using: transitionContext)
         UIView.animate(withDuration: duration, delay: 0.0, options: .curveEaseIn, animations: {
-            toView!.frame = toViewFinalFrame
+            firstSnap.frame = CGRect(x: 0, y: -firstSnap.frame.height, width: ScreenWidth, height: firstSnap.frame.height)
+            
+            let middleViewFrameChange: () -> () = {
+                var frame = self.middleView.frame
+                frame.origin.y = 0
+                self.middleView.frame = frame
+            }
+            middleViewFrameChange()
+            middleSnap.frame = toViewFinalFrame
+            lastSnap.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: ScreenWidth, height: self.frame.height)
+            toView?.frame = toViewFinalFrame
         }) { (finished) in
+//            snapshotView.removeFromSuperview()
+            firstSnap.removeFromSuperview()
+            middleSnap.removeFromSuperview()
+            lastSnap.removeFromSuperview()
+            toView?.isHidden = false
             transitionContext.completeTransition(true)
         }
     }
+}
+
+extension CustomPushAnimation {
     
+    func firstSnapshot(fromView: UIView, frame: CGRect) -> UIView? {
+        let nFrame = CGRect(x: 0, y: 0, width: ScreenWidth, height: frame.origin.y)
+        let view = fromView.resizableSnapshotView(from: nFrame, afterScreenUpdates: false, withCapInsets: .zero)
+        return view
+    }
     
+    func middleSnapshot(toView: UIView, frame: CGRect) -> UIView? {
+        middleView = toView.snapshotView(afterScreenUpdates: true)
+        middleView?.frame = toView.frame
+        
+        let view = UIView(frame: CGRect(x: 0, y: frame.origin.y, width: ScreenWidth, height: frame.height + 44))
+        view.backgroundColor = .white
+        view.clipsToBounds = true
+        
+        view.addSubview(middleView!)
+        var frame = middleView?.frame
+        frame?.origin.y = -44
+        middleView?.frame = frame!
+
+        return view
+    }
+    
+    func lastSnapshot(fromView: UIView, frame: CGRect) -> UIView? {
+        let frameHeight = fromView.frame.height - (frame.origin.y + frame.height)
+        let nFrame = CGRect(x: 0, y: frame.origin.y + frame.height, width: fromView.frame.width, height: frameHeight)
+        let view = fromView.resizableSnapshotView(from: nFrame, afterScreenUpdates: false, withCapInsets: .zero)
+        view?.frame = nFrame
+        return view
+    }
 }
 
 private class CustomPopAnimation: NSObject, UIViewControllerAnimatedTransitioning {
