@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomTableViewCell" rowHeight="293" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="ListToDetail" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="293"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="323" height="292.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spiderMan" translatesAutoresizingMaskIntoConstraints="NO" id="VBF-ev-WnD">
+                        <rect key="frame" x="0.0" y="0.0" width="323" height="201"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="201" id="vdW-v3-47R"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Spider Man" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0u-ka-ykw">
+                        <rect key="frame" x="16" y="216" width="182" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Peter Parker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqe-J2-QTu">
+                        <rect key="frame" x="16" y="245" width="94" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="g0u-ka-ykw" secondAttribute="trailing" constant="109" id="4Yc-tB-lYh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hqe-J2-QTu" secondAttribute="trailing" constant="197" id="5bd-TM-5yB"/>
+                    <constraint firstItem="hqe-J2-QTu" firstAttribute="top" secondItem="g0u-ka-ykw" secondAttribute="bottom" constant="8" id="6to-sE-7uI"/>
+                    <constraint firstItem="hqe-J2-QTu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="9ft-P9-Lsl"/>
+                    <constraint firstItem="g0u-ka-ykw" firstAttribute="top" secondItem="VBF-ev-WnD" secondAttribute="bottom" constant="15" id="A6m-rd-vDd"/>
+                    <constraint firstItem="VBF-ev-WnD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="I0G-Qm-Dub"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="hqe-J2-QTu" secondAttribute="bottom" constant="16" id="I4E-bc-UYo"/>
+                    <constraint firstItem="g0u-ka-ykw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="iP2-eq-hzb"/>
+                    <constraint firstAttribute="trailing" secondItem="VBF-ev-WnD" secondAttribute="trailing" id="qTj-4C-Arr"/>
+                    <constraint firstItem="VBF-ev-WnD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="yvI-TO-35q"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="35.5" y="178.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="spiderMan" width="1280" height="720"/>
+    </resources>
+</document>

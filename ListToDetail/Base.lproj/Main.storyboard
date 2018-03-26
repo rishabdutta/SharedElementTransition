@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +14,86 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ListToDetail" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bTM-GE-bdE">
+                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Zia-DP-0zD"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="50e-B8-NXG"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bTM-GE-bdE" secondAttribute="trailing" constant="16" id="1d0-Ca-573"/>
+                            <constraint firstItem="bTM-GE-bdE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="AcS-on-Drf"/>
+                            <constraint firstItem="bTM-GE-bdE" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="HKN-DZ-2Xc"/>
+                            <constraint firstItem="bTM-GE-bdE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="JMQ-qZ-UjP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="TNJ-hr-r30"/>
+                    <connections>
+                        <outlet property="tableView" destination="bTM-GE-bdE" id="ty2-Wg-fCG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="818.39999999999998" y="133.5832083958021"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="esw-5e-JeW">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="VLY-Ob-JwJ" customClass="DetailViewController" customModule="ListToDetail" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B8Z-SW-dYg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="384" image="spiderMan" translatesAutoresizingMaskIntoConstraints="NO" id="ns3-uP-lji">
+                                <rect key="frame" x="16" y="20" width="343" height="201"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Spider Man" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dw7-Zb-oWw">
+                                <rect key="frame" x="16" y="249" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VoB-Mc-6xC">
+                                <rect key="frame" x="16" y="278" width="343" height="369"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Spider-Man is a 2002 American superhero film directed by Sam Raimi and based on the Marvel Comics character of the same name. The film stars Tobey Maguire as Peter Parker, a high school student living in New York City, who turns to crimefighting after developing spider-like super powers. Spider-Man also stars Kirsten Dunst as Peter's love interest Mary Jane Watson, Willem Dafoe as Norman Osborn / Green Goblin, Rosemary Harris and Cliff Robertson as Aunt May and Uncle Ben, and James Franco as his best friend Harry Osborn.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Of2-AT-sn5" firstAttribute="trailing" secondItem="Dw7-Zb-oWw" secondAttribute="trailing" constant="253" id="2qb-0C-Omo"/>
+                            <constraint firstItem="Of2-AT-sn5" firstAttribute="bottom" secondItem="VoB-Mc-6xC" secondAttribute="bottom" constant="20" id="40L-5p-pHR"/>
+                            <constraint firstItem="ns3-uP-lji" firstAttribute="height" secondItem="B8Z-SW-dYg" secondAttribute="height" multiplier="201/667" id="V7L-DA-qoS"/>
+                            <constraint firstItem="VoB-Mc-6xC" firstAttribute="top" secondItem="Dw7-Zb-oWw" secondAttribute="bottom" constant="8" id="bww-XJ-AQE"/>
+                            <constraint firstItem="ns3-uP-lji" firstAttribute="top" secondItem="Of2-AT-sn5" secondAttribute="top" id="cmZ-OY-jDu"/>
+                            <constraint firstItem="VoB-Mc-6xC" firstAttribute="leading" secondItem="Of2-AT-sn5" secondAttribute="leading" constant="16" id="dGi-7H-ncd"/>
+                            <constraint firstItem="Dw7-Zb-oWw" firstAttribute="leading" secondItem="Of2-AT-sn5" secondAttribute="leading" constant="16" id="dqA-XL-hC8"/>
+                            <constraint firstItem="Of2-AT-sn5" firstAttribute="trailing" secondItem="VoB-Mc-6xC" secondAttribute="trailing" constant="16" id="nMk-v5-tuI"/>
+                            <constraint firstItem="Dw7-Zb-oWw" firstAttribute="top" secondItem="ns3-uP-lji" secondAttribute="bottom" constant="28" id="paz-Vh-5uL"/>
+                            <constraint firstItem="Of2-AT-sn5" firstAttribute="trailing" secondItem="ns3-uP-lji" secondAttribute="trailing" constant="16" id="rDI-Xg-QKO"/>
+                            <constraint firstItem="ns3-uP-lji" firstAttribute="leading" secondItem="Of2-AT-sn5" secondAttribute="leading" constant="16" id="uLj-cc-IEH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Of2-AT-sn5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IaI-CR-UKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1484" y="139.880059970015"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="spiderMan" width="1280" height="720"/>
+    </resources>
 </document>
