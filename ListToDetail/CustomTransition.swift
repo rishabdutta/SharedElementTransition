@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 let ScreenWidth = UIScreen.main.bounds.width
-
+let StatusBarHeight = UIApplication.shared.statusBarFrame.height
 
 class CustomTransition: NSObject {
     var frame: CGRect!
@@ -56,11 +56,6 @@ private class CustomPushAnimation: NSObject, UIViewControllerAnimatedTransitioni
         let toViewFinalFrame = transitionContext.finalFrame(for: toVC!)
         let containerView = transitionContext.containerView
         
-        
-//        guard let snapshotView = toVC?.view.snapshotView(afterScreenUpdates: true) else { return }
-//        containerView.addSubview(snapshotView)
-//        snapshotView.frame = frame
-        
         guard let firstSnap = firstSnapshot(fromView: fromVC!.view, frame: frame) else { return }
         containerView.addSubview(firstSnap)
         
@@ -71,7 +66,6 @@ private class CustomPushAnimation: NSObject, UIViewControllerAnimatedTransitioni
         containerView.addSubview(lastSnap)
         
         containerView.addSubview(toView!)
-//        toView?.frame = CGRect(x: 0, y: frame.origin.y, width: ScreenWidth, height: frame.height)
         toView?.isHidden = true
 
         
@@ -89,7 +83,6 @@ private class CustomPushAnimation: NSObject, UIViewControllerAnimatedTransitioni
             lastSnap.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: ScreenWidth, height: self.frame.height)
             toView?.frame = toViewFinalFrame
         }) { (finished) in
-//            snapshotView.removeFromSuperview()
             firstSnap.removeFromSuperview()
             middleSnap.removeFromSuperview()
             lastSnap.removeFromSuperview()
@@ -111,13 +104,13 @@ extension CustomPushAnimation {
         middleView = toView.snapshotView(afterScreenUpdates: true)
         middleView?.frame = toView.frame
         
-        let view = UIView(frame: CGRect(x: 0, y: frame.origin.y, width: ScreenWidth, height: frame.height + 44))
+        let view = UIView(frame: CGRect(x: 0, y: frame.origin.y, width: ScreenWidth, height: frame.height))
         view.backgroundColor = .white
         view.clipsToBounds = true
         
         view.addSubview(middleView!)
         var frame = middleView?.frame
-        frame?.origin.y = -44
+        frame?.origin.y = -StatusBarHeight
         middleView?.frame = frame!
 
         return view
@@ -125,7 +118,7 @@ extension CustomPushAnimation {
     
     func lastSnapshot(fromView: UIView, frame: CGRect) -> UIView? {
         let frameHeight = fromView.frame.height - (frame.origin.y + frame.height)
-        let nFrame = CGRect(x: 0, y: frame.origin.y + frame.height, width: fromView.frame.width, height: frameHeight)
+        let nFrame = CGRect(x: 0, y: frame.origin.y + frame.height, width: ScreenWidth, height: frameHeight)
         let view = fromView.resizableSnapshotView(from: nFrame, afterScreenUpdates: false, withCapInsets: .zero)
         view?.frame = nFrame
         return view
