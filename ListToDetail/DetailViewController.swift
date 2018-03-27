@@ -14,7 +14,6 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationController?.navigationBar.backgroundColor = .purple
     }
         
 //    override func viewDidDisappear(_ animated: Bool) {
